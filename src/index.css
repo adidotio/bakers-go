@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #fef8f0;
+  --color-brand-100: #fdecd8;
+  --color-brand-200: #fbd6b3;
+  --color-brand-300: #f7b781;
+  --color-brand-400: #f2904c;
+  --color-brand-500: #ec7025;
+  --color-brand-600: #de551a;
+  --color-brand-700: #b93f17;
+  --color-brand-800: #93331a;
+  --color-brand-900: #762d18;
+  --color-brand-950: #40140a;
+
+  --animate-fade-in-up: fade-in-up 0.8s ease-out;
+  
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  :root {
+    --background: #fdfbf7;
+    --foreground: #2d1c13;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-brand-200);
+  border-radius: 5px;
+  border: 2px solid var(--background);
+}
+
+/* Smooth transitions for interactive elements */
+a, button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base link hover styling */
+.link-hover {
+  position: relative;
+}
+.link-hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--color-brand-600);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+.link-hover:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
